@@ -32,6 +32,18 @@ under the License.
    <artifactId>symphonyoss</artifactId>
    <version>1-SNAPSHOT</version>
  </parent> -->
+ <distributionManagement>
+   <repository>
+     <id>ossrh</id>
+     <name>${distMgmtReleaseName}</name>
+     <url>${distMgmtReleaseUrl}</url>
+   </repository>
+   <snapshotRepository>
+     <id>ossrh</id>
+     <name>${distMgmtSnapshotsName}</name>
+     <url>${distMgmtSnapshotsUrl}</url>
+   </snapshotRepository>
+ </distributionManagement>
 
   <name>Symphony Software Foundation Enforcer Rules</name>
   <description>Maven Enforcer Rules used by Symphony Software Foundation Parent Pom</description>
@@ -39,6 +51,11 @@ under the License.
   <properties>
     <api.version>1.4.1</api.version>
     <maven.version>2.0.11</maven.version>
+
+    <distMgmtReleaseName>Symphony Foundation Release Distribution Repository</distMgmtReleaseName>
+    <distMgmtReleaseUrl>https://oss.sonatype.org/content/repositories/releases/</distMgmtReleaseUrl>
+    <distMgmtSnapshotsName>Symphony Foundation Development Snapshot Repository</distMgmtSnapshotsName>
+    <distMgmtSnapshotsUrl>https://oss.sonatype.org/content/repositories/snapshots/</distMgmtSnapshotsUrl>
   </properties>
 
   <scm>
