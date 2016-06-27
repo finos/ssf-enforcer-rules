@@ -46,6 +46,18 @@ under the License.
     <url>https://github.com/symphonyoss/ssf-enforcer-rules</url>
   </scm>
 
+  <!-- Temporary until the ssf-parent-pom dependency is released on Maven Central -->
+  <repositories>
+    <repository>
+      <id>ossrh</id>
+      <name>OSSRH Public Group</name>
+      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
   <dependencies>
     <dependency>
       <groupId>org.apache.maven.enforcer</groupId>
