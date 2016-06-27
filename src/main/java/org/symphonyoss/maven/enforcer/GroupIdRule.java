@@ -49,7 +49,7 @@ public class GroupIdRule
             String groupId = (String) helper.evaluate( "${project.groupId}" );
             log.debug( "Retrieved groupId: " + groupId );
 
-            if (!groupId.equals(this.groupIdPrefix) || !groupId.equals(this.groupIdPrefix+".")) {
+            if (!groupId.equals(this.groupIdPrefix) && !groupId.equals(this.groupIdPrefix+".")) {
               throw new EnforcerRuleException( "Failing because "+groupId+" should start with "+groupIdPrefix);
             }
         } catch ( ExpressionEvaluationException e ) {
