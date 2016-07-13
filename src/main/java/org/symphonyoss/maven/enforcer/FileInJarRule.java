@@ -44,7 +44,14 @@ public class FileInJarRule implements EnforcerRule {
     }
 
     private boolean unzipAndCheck(String filePath) throws EnforcerRuleException {
-        String tmpFolder = "/tmp/maven-enforcer-fileinjar-rule-"+System.currentTimeMillis();
+        File tmpFolder = null;
+        try {
+            tmpFolder = File.createTempFile("maven-enforcer-fileinjar-rule", String.valueOf(System.currentTimeMillis()));
+            tmpFolder.delete();
+            tmpFolder.mkdir();
+        } catch (IOException e) {
+            throw new RuntimeException("Cannot create temp folder");
+        }
 
         try {
             if (this.fileName != null) {

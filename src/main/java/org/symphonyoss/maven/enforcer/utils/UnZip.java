@@ -1,10 +1,6 @@
 package org.symphonyoss.maven.enforcer.utils;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -18,16 +14,12 @@ public class UnZip {
     /**
      * Extracts a Jar file
      * @param jarPath
-     * @param destDir
+     * @param destinationFolder
      * @param fileNameToExtract
      * @throws IOException
      */
-    public boolean extractFileFromJar(String jarPath, String destDir, String fileNameToExtract) throws IOException {
+    public boolean extractFileFromJar(String jarPath, File destinationFolder, String fileNameToExtract) throws IOException {
 
-        File dest = new File(destDir);
-        if (!dest.exists()) {
-            dest.mkdir();
-        }
         java.util.jar.JarFile jar = new java.util.jar.JarFile(jarPath);
         java.util.Enumeration enumEntries = jar.entries();
         boolean fileFound = false;
@@ -35,9 +27,9 @@ public class UnZip {
             java.util.jar.JarEntry jarEntry = (java.util.jar.JarEntry) enumEntries.nextElement();
             if (fileNameToExtract.equals(jarEntry.getName()) || jarEntry.getName().endsWith("/"+fileNameToExtract)) {
                 fileFound = true;
-                java.io.File f = new java.io.File(destDir + java.io.File.separator + jarEntry.getName().substring(jarEntry.getName().lastIndexOf('/')));
-                java.io.InputStream is = jar.getInputStream(jarEntry); // get the input stream
-                java.io.FileOutputStream fos = new java.io.FileOutputStream(f);
+                File f = new java.io.File(destinationFolder, File.separator + jarEntry.getName().substring(jarEntry.getName().lastIndexOf('/')));
+                InputStream is = jar.getInputStream(jarEntry); // get the input stream
+                FileOutputStream fos = new FileOutputStream(f);
                 while (is.available() > 0) {  // write contents of 'is' to 'fos'
                     fos.write(is.read());
                 }
@@ -47,7 +39,6 @@ public class UnZip {
             }
         }
 
-        dest.delete();
         return false;
     }
 }
