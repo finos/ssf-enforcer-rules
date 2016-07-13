@@ -46,6 +46,8 @@ public class UnZip {
                 return true;
             }
         }
+
+        dest.delete();
         return false;
     }
 }
