@@ -35,7 +35,7 @@ import java.io.IOException;
 
 /**
  * @author <a href="mailto:maoo@symphony.foundation">Maurizio Pillitu</a>
- * This Rule fails if either <scm>, <developers> or <licenses> is not set in the root pom.xml
+ * This Rule fails if either &lt;url&gt;, &lt;description&gt;, &lt;scm&gt;, &lt;developers&gt; or &lt;licenses&gt; is not set in the root pom.xml
  *
  */
 public class RequirePomMetadataRule
