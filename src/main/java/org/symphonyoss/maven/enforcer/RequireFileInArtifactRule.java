@@ -11,14 +11,13 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class FileInJarRule implements EnforcerRule {
+public class RequireFileInArtifactRule implements EnforcerRule {
 
     private String fileName;
     private String match;
 
     private UnZip unzip = new UnZip();
 
-    @Override
     public void execute(EnforcerRuleHelper enforcerRuleHelper) throws EnforcerRuleException {
         String artifactId = null;
         String packaging = null;
@@ -36,10 +35,16 @@ public class FileInJarRule implements EnforcerRule {
 
         String filePath = target + "/" + artifactId + "-" + version + "." + packaging;
 
-        if (!new File(filePath).exists()) {
-            enforcerRuleHelper.getLog().warn("Skipping FileInJarRule since file doesn't exist - "+filePath);
+        boolean applyRule = packaging.equalsIgnoreCase("jar") || packaging.equalsIgnoreCase("war");
+
+        if (applyRule) {
+            if (!new File(filePath).exists()) {
+                enforcerRuleHelper.getLog().warn("RequireFileInArtifactRule is skipping since file doesn't exist - " + filePath);
+            } else {
+                unzipAndCheck(filePath);
+            }
         } else {
-            unzipAndCheck(filePath);
+            enforcerRuleHelper.getLog().debug("RequireFileInArtifactRule is skipping execution since packaging ("+packaging+") is not a JAR or a WAR");
         }
     }
 
@@ -74,10 +79,10 @@ public class FileInJarRule implements EnforcerRule {
                                 return true;
                             }
                         }
-                        throw new EnforcerRuleException("Unable to find match for '" + this.match + "' within file " + extractedFile + " and file " + filePath);
+                        throw new EnforcerRuleException("RequireFileInArtifactRule is unable to find match for '" + this.match + "' within file " + extractedFile + " and file " + filePath);
                     }
                 } else {
-                    throw new EnforcerRuleException("Unable to find file " + this.fileName + " within file " + filePath);
+                    throw new EnforcerRuleException("RequireFileInArtifactRule is unable to find file " + this.fileName + " within file " + filePath);
                 }
             }
         } catch (IOException e) {
@@ -86,19 +91,16 @@ public class FileInJarRule implements EnforcerRule {
         return false;
     }
 
-    @Override
     public boolean isCacheable() {
         return false;
     }
 
     // Not used if cachable=false
-    @Override
     public String getCacheId() {
         return ""+"."+this.fileName+"."+this.match;
     }
 
     // Not used if cachable=false
-    @Override
     public boolean isResultValid( EnforcerRule arg0 ) {
         return false;
     }

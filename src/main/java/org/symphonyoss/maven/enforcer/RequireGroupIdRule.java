@@ -31,7 +31,7 @@ import org.codehaus.plexus.component.configurator.expression.ExpressionEvaluatio
  * @author <a href="mailto:maoo@symphony.foundation">Maurizio Pillitu</a>
  * This Rule fails if the groupId of the current project doesn't match with groupIdPrefix (or groupIdPrefix.)
  */
-public class GroupIdRule
+public class RequireGroupIdRule
     implements EnforcerRule
 {
     /**
@@ -50,10 +50,10 @@ public class GroupIdRule
             log.debug( "Retrieved groupId: " + groupId );
 
             if (!groupId.equals(this.groupIdPrefix) && !groupId.startsWith(this.groupIdPrefix+".")) {
-              throw new EnforcerRuleException( "Failing because "+groupId+" should start with "+groupIdPrefix);
+              throw new EnforcerRuleException( "RequireGroupIdRule is failing because "+groupId+" should start with "+groupIdPrefix);
             }
         } catch ( ExpressionEvaluationException e ) {
-            throw new EnforcerRuleException( "Unable to lookup an expression " + e.getLocalizedMessage(), e );
+            throw new EnforcerRuleException( "RequireGroupIdRule is unable to lookup an expression " + e.getLocalizedMessage(), e );
         }
     }
 
