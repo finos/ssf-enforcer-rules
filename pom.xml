@@ -21,24 +21,46 @@ under the License.
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
-  <groupId>org.symphonyoss</groupId>
   <artifactId>ssf-enforcer-rules</artifactId>
   <version>0.9.0-SNAPSHOT</version>
 
   <parent>
     <groupId>org.symphonyoss</groupId>
     <artifactId>symphonyoss</artifactId>
-    <version>2-SNAPSHOT</version>
+    <version>1</version>
   </parent>
 
   <name>Symphony Software Foundation Enforcer Rules</name>
   <description>Maven Enforcer Rules used by Symphony Software Foundation Parent Pom</description>
+  <url>https://symphony.foundation</url>
+  <organization>
+    <name>The Symphony Software Foundation</name>
+    <url>https://symphony.foundation</url>
+  </organization>
 
-  <properties>
-    <api.version>1.4.1</api.version>
-    <maven.version>2.0.11</maven.version>
-  </properties>
+  <developers>
+    <developer>
+      <id>maoo</id>
+      <name>Maurizio Pillitu</name>
+      <email>maoo@symphony.foundation</email>
+      <url>http://github.com/maoo</url>
+      <organization>Symphony Software Foundation</organization>
+      <organizationUrl>http://symphony.foundation</organizationUrl>
+      <timezone>+1</timezone>
+      <roles>
+        <role>Architect</role>
+        <role>Developer</role>
+      </roles>
+    </developer>
+  </developers>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
 
   <scm>
     <connection>scm:git:git://github.com/symphonyoss/ssf-enforcer-rules.git</connection>
@@ -46,17 +68,10 @@ under the License.
     <url>https://github.com/symphonyoss/ssf-enforcer-rules</url>
   </scm>
 
-  <!-- Temporary until the ssf-parent-pom dependency is released on Maven Central -->
-  <repositories>
-    <repository>
-      <id>ossrh</id>
-      <name>OSSRH Public Group</name>
-      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
+  <properties>
+    <api.version>1.4.1</api.version>
+    <maven.version>2.0.11</maven.version>
+  </properties>
 
   <dependencies>
     <dependency>
