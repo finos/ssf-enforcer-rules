@@ -1,3 +1,5 @@
+[![Maven Central](https://img.shields.io/maven-central/v/org.symphonyoss/ssf-enforcer-rules.svg?maxAge=2592000)](http://search.maven.org/#artifactdetails%7Corg.symphonyoss%7Cssf-enforcer-rules%7C2%7Cpom)
+
 # Symphony Software Foundation Enforcer Rules
 A collection of custom rules used to enforce Maven projects hosted by the Symphony Software Foundation.
 These rules are used by the [Symphony Foundation Parent Pom](http://github.com/symphonyoss/ssf-parent-pom)
