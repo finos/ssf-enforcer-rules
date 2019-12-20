@@ -1,3 +1,6 @@
+| NOTE! This project is not active anymore, therefore marked as ARCHIVED; if you're interested to become the maintener of this project, open an issue or email help@finos.org . |
+| --- |
+
 [![Maven Central](https://img.shields.io/maven-central/v/org.symphonyoss/ssf-enforcer-rules.svg?maxAge=2592000)](http://search.maven.org/#artifactdetails%7Corg.symphonyoss%7Cssf-enforcer-rules%7C2%7Cpom)
 
 # Symphony Software Foundation Enforcer Rules
